@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Para ti, Atziri ❤️</title>
+  <!-- Tipografías Google Fonts: Cormorant Garamond (editorial) & Plus Jakarta Sans (lectura moderna) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Lienzo de partículas/pétalos flotantes -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- Control de música flotante (aparece al abrir el sobre) -->
+  <button id="music-toggle" class="music-btn hidden" aria-label="Controlar música">
+    <span class="music-bars" id="music-bars">
+      <span></span><span></span><span></span>
+    </span>
+    <span id="music-label">Música</span>
+  </button>
+
+  <!-- Audio de fondo (coloca tu archivo musica.mp3 en la misma carpeta) -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="musica.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ESCENA 1: SOBRE CERRADO -->
+  <main id="envelope-scene" class="scene active">
+    <div class="intro-header">
+      <p class="subtitle">Una carta para ti</p>
+      <h1 class="recipient-name">Atziri Anabel</h1>
+      <span class="date-pill">22 · 08 · 2024</span>
+    </div>
+
+    <div class="envelope-wrapper" id="envelope-wrapper">
+      <div class="envelope" id="envelope">
+        <!-- Interior del sobre -->
+        <div class="envelope-back"></div>
+        
+        <!-- Vista previa de la hoja asomándose -->
+        <div class="letter-preview">
+          <span>Para el amor de mi vida...</span>
+        </div>
+
+        <!-- Solapas frontales -->
+        <div class="envelope-front"></div>
+        <div class="envelope-flap" id="envelope-flap"></div>
+
+        <!-- Sello de cera interactivo -->
+        <button class="wax-seal" id="wax-seal" aria-label="Abrir carta">
+          <div class="seal-inner">
+            <span class="seal-initials">J &amp; A</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <p class="tap-hint" id="tap-hint">Toca el sello para abrir tu carta</p>
+  </main>
+
+  <!-- ESCENA 2: CARTA DESPLEGADA -->
+  <section id="letter-scene" class="letter-scene hidden">
+    <article class="paper-sheet">
+      <!-- Decoración superior -->
+      <div class="paper-ornament">✦ &nbsp; 22 de Agosto, 2024 — Siempre &nbsp; ✦</div>
+
+      <header class="letter-header">
+        <h2>Para ti, el amor de mi vida:</h2>
+      </header>
+
+      <div class="letter-body">
+        <p class="reveal-paragraph">
+          Sé que nuestro mes fue el domingo pasado y que te debo estas palabras desde hace un par de días, pero hoy quiero entregártelas con toda la calma y la sinceridad del mundo. Si algo he aprendido desde aquel <strong>22 de agosto</strong> en que decidimos empezar esta historia, es que lo nuestro es demasiado grande como para encerrarlo en una sola fecha del calendario. Cada día contigo es una celebración, y hoy quiero tomarme el tiempo para escribirte desde lo más profundo de lo que siento, sin prisas, asegurándome de que sepas exactamente el lugar tan inmenso que ocupas en mi vida.
+        </p>
+
+        <p class="reveal-paragraph">
+          A veces me quedo mirándote en silencio y me sigue pareciendo increíble lo absurdamente hermosa que eres. Me enamora cada detalle de ti: tu sonrisa capaz de desarmarme en segundos, el brillo tan especial que tienen tus ojos cuando hablas de algo que te apasiona, tu voz y la manera tan natural en la que irradias luz a donde quiera que vas. Pero más allá de esa belleza física que me vuelve loco, lo que realmente me tiene profundamente enamorado es la mujer extraordinaria que eres por dentro. Admiro tu corazón noble, tu sensibilidad, tu entrega y esa fuerza silenciosa con la que enfrentas tus días, tus estudios, tus metas y cada reto que se te pone enfrente. Eres una mujer admirable en toda la extensión de la palabra, y sentirme el hombre que camina a tu lado es el orgullo más grande que tengo.
+        </p>
+
+        <p class="reveal-paragraph">
+          No tienes idea de todo lo que causas en mí con solo existir. Llegaste a mi vida para transformarla por completo. En ti encontré una paz que no sabía que necesitaba, un refugio donde el ruido del mundo exterior desaparece y todo vuelve a tener sentido. Al mismo tiempo, eres mi mayor motor y mi inspiración más grande; me das ganas de superarme, de esforzarme más, de ser un mejor hombre, un mejor compañero y alguien digno del amor tan bonito que me das. Me encanta cómo logras convertir los momentos más cotidianos —una plática cualquiera, una tarde tranquila, un café compartido o simplemente estar juntos sin hacer nada— en mis recuerdos favoritos. Contigo aprendí que el verdadero amor no se trata solo de los momentos perfectos, sino de tener a la persona correcta para enfrentar cualquier día, por más largo o cansado que haya sido.
+        </p>
+
+        <p class="reveal-paragraph">
+          Por eso quiero que hoy, más que nunca, tengas la certeza absoluta de que estoy completamente comprometido contigo, con tu felicidad y con esta relación. No te quiero para una etapa; te quiero para toda la vida. Estoy decidido a caminar de tu mano por siempre, a ser tu equipo incondicional, tu respaldo cuando sientas que las fuerzas flaquean, tu cómplice en cada locura y tu lugar seguro en las buenas y en las tormentas. Quiero cuidarte, respetarte, escucharte y demostrarte con hechos, todos los días, que elegirme fue la mejor decisión.
+        </p>
+
+        <p class="reveal-paragraph">
+          Miro hacia adelante y me emociona profundamente todo lo que estamos construyendo. Cada sueño que hemos platicado en voz baja, cada meta personal y profesional que tienes, cada proyecto que tenemos en mente juntos y esa vida que tanto imaginamos para nuestro futuro, <strong>se nos va a cumplir</strong>. Tengo la convicción total de que vamos a lograrlo todo, paso a paso, con paciencia, trabajo y mucho amor, hasta ver cómo cada idea que hoy vive en nuestra mente se convierte en nuestra realidad.
+        </p>
+
+        <p class="reveal-paragraph">
+          Gracias por llegar a mi vida, por tu paciencia, por tu ternura, por creer en nosotros y por hacerme sentir el hombre más afortunado del mundo. Feliz mes, mi Atziri hermosa. Te amo con toda mi alma, con todo lo que soy, hoy, mañana y siempre.
+        </p>
+      </div>
+
+      <footer class="letter-footer reveal-paragraph">
+        <p class="closing">Con todo mi amor y mi vida entera,</p>
+        <p class="signature">Jonathan</p>
+
+        <div class="divider"></div>
+
+        <!-- Botón para descargar tarjeta de recuerdo -->
+        <div class="memory-card-action">
+          <button id="download-memory-btn" class="btn-memory">
+            Guardar nuestro recuerdo
+          </button>
+          <span class="memory-hint">Descarga una postal especial de este día</span>
+        </div>
+      </footer>
+    </article>
+  </section>
+
+  <!-- Canvas oculto para generar la imagen descargable -->
+  <canvas id="memory-canvas" width="1080" height="1350" style="display: none;"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
